@@ -1,17 +1,68 @@
-describe("identify blocks", () => {
-  it("should identify one block", () => {});
-  it("should identify two blocks", () => {});
-});
+import { prettifyMarkdown } from '../src/prettifyMarkdown';
+import * as fixtures from '../fixtures';
 
-describe("prettify block", () => {
-  it("should prettify block", () => {});
-  it("should throw syntax error for erroneous code", () => {});
-});
+describe('identify blocks', () => {
+    it('should identify one block', () => {
+        expect(prettifyMarkdown(fixtures.complete))
+            .toEqual(`I have a question with three code blocks
 
-describe("re-insert  block", () => {
-  it("should re-insert block", () => {});
-});
+Code block #1:
 
-describe("prettify markdown", () => {
-  it("should prettify markdown", () => {});
+\`\`\`typescript
+let fibonacci: number[] = [0, 1];
+
+function listFibonacci(num: number) {
+  for (let i: number = 2; i < num; i++) {
+    fibonacci[i] = fibonacci[i - 2] + fibonacci[i - 1];
+  }
+  return fibonacci;
+}
+console.log(listFibonacci(10));
+\`\`\`
+
+
+Code block #2
+\`\`\`scss
+.button {
+  &:hover {
+    &:active {
+      color: green;
+    }
+  }
+}
+
+input[type=\"text\"] {
+  border-color: green;
+  background-color: yellow;
+}
+\`\`\`
+
+
+
+Code block #3:
+\`\`\`html
+<html>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>second column</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>name #1</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>name #1</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+\`\`\``);
+    });
 });

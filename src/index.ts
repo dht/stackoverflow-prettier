@@ -1,0 +1,1 @@
+export { prettifyMarkdown } from './prettifyMarkdown';
