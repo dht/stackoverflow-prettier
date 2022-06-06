@@ -36,7 +36,7 @@ export const prettifyMarkdown = (markdown: string): string => {
         const languageRegex = /\`\`\`([a-zA-Z]+)/;
         const match = block.match(languageRegex);
 
-        // markdown has no blocks
+        // code block language not given
         if (!match) {
             return block;
         }
